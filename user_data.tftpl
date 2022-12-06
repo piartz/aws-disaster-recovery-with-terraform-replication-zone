@@ -1,0 +1,6 @@
+#!/bin/bash
+
+yum update -y
+yum install -y python3
+cd /tmp && echo "This machine is $(hostname)" > index.html
+python3 -m http.server 80 &
