@@ -1,6 +1,6 @@
 # AWS Regional Disaster Recovery with Terraform - **Recovery Zone**
 
-This project aims to provide a PoC environment to implement several strategies on AWS disaster recovery. This repository creates the recovery service for the primary service described in [aws-dr-terraform](https://gitlab.com/xebia-security/aws-dr-terraform).
+This project aims to provide a PoC environment to implement several strategies on AWS disaster recovery. This repository creates the recovery service for the primary service described in [aws-dr-terraform](https://github.com/piartz/aws-dr-terraform).
 
 ## Cloud Diagram
 
@@ -10,21 +10,21 @@ The project will generate a subset of the following diagram (*source: [AWS Disas
 
 ## Configuration
 
-**Region**: `eu-west-1`. Can be changed at [providers.tf](https://gitlab.com/xebia-security/aws-disaster-recovery-with-terraform-replication-zone/-/blob/main/providers.tf)
+**Region**: `eu-west-1`. Can be changed at [providers.tf](https://github.com/piartz/aws-disaster-recovery-with-terraform-replication-zone/blob/main/providers.tf)
 
 **Modes**: Pilot Light, Warm Stand-by, Multi-region Deployment.
 
 ### Pilot light
 
-On [variables.tf](https://gitlab.com/xebia-security/aws-disaster-recovery-with-terraform-replication-zone/-/blob/main/variables.tf), change the desired capacity of the autoscaler group to `0`. When entering recovery mode, you can scale this capacity to `1` or `2` (or any other value you may need, providing the maximum capacity is also changed). You can revert these changes later and EC2 instances created due to this change will be decommissioned when scaling down. 
+On [variables.tf](https://github.com/piartz/aws-disaster-recovery-with-terraform-replication-zone/blob/main/variables.tf), change the desired capacity of the autoscaler group to `0`. When entering recovery mode, you can scale this capacity to `1` or `2` (or any other value you may need, providing the maximum capacity is also changed). You can revert these changes later and EC2 instances created due to this change will be decommissioned when scaling down. 
 
 ### Warm stand-by
 
-On [variables.tf](https://gitlab.com/xebia-security/aws-disaster-recovery-with-terraform-replication-zone/-/blob/main/variables.tf), change the desired capacity of the autoscaler group to `1`. When entering recovery mode, you can scale this capacity to `2` (or any other value you may need, providing the maximum capacity is also changed). You can revert these changes later and EC2 instances created due to this change will be decommissioned when scaling down.  
+On [variables.tf](https://github.com/piartz/aws-disaster-recovery-with-terraform-replication-zone/blob/main/variables.tf), change the desired capacity of the autoscaler group to `1`. When entering recovery mode, you can scale this capacity to `2` (or any other value you may need, providing the maximum capacity is also changed). You can revert these changes later and EC2 instances created due to this change will be decommissioned when scaling down.  
 
 ### Multi-site active
 
-On [variables.tf](https://gitlab.com/xebia-security/aws-disaster-recovery-with-terraform-replication-zone/-/blob/main/variables.tf), change the desired and minimum capacity of the autoscaler group to `2`. This option will provide you with an exactly replicated and functional environment as the original one. 
+On [variables.tf](https://github.com/piartz/aws-disaster-recovery-with-terraform-replication-zone/blob/main/variables.tf), change the desired and minimum capacity of the autoscaler group to `2`. This option will provide you with an exactly replicated and functional environment as the original one. 
 
 
 ## How to deploy
